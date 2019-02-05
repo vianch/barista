@@ -1,0 +1,65 @@
+$breakpoints: (
+        xs: 320px,
+        sm: 480px,
+        md: 760px,
+        lg: 960px,
+        xl: 1200px,
+        xx: 1600px
+);
+
+@mixin respond-to($media) {
+  @if $media == low-only {
+    @media only screen and (min-width:1px) and (max-width: map-get($breakpoints,xs)) { @content; }
+  }
+  @else if $media == xs-only {
+    @media only screen and (min-width: map-get($breakpoints, xs)) and (max-width: map-get($breakpoints, sm)) { @content; }
+  }
+  @else if $media == sm-only {
+    @media only screen and (min-width: map-get($breakpoints, sm)) and (max-width: map-get($breakpoints, md)) { @content; }
+  }
+  @else if $media == mat-only {
+    @media only screen and (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) { @content; }
+  }
+  @else if $media == lg-only {
+    @media only screen and (min-width: map-get($breakpoints, lg)) and (max-width: map-get($breakpoints, xl)) { @content; }
+  }
+  @else if $media == xl-only {
+    @media only screen and (min-width: map-get($breakpoints, xl)) and (max-width: map-get($breakpoints, xx)) { @content; }
+  }
+  @else if $media == low {
+    @media only screen and (min-width:1px) { @content; }
+  }
+  @else if $media == xs {
+    @media only screen and (min-width: map-get($breakpoints, xs)) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: map-get($breakpoints, sm)) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: map-get($breakpoints, md)) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: map-get($breakpoints, lg)) { @content; }
+  }
+  @else if $media == xl {
+    @media only screen and (min-width: map-get($breakpoints, xl))  { @content; }
+  }
+  @else if $media == xx {
+    @media only screen and (min-width: map-get($breakpoints, xx)) { @content; }
+  }
+  @else if $media == xs-max {
+    @media only screen and (max-width: map-get($breakpoints, xs)) { @content; }
+  }
+  @else if $media == sm-max {
+    @media only screen and (max-width: map-get($breakpoints, sm)) { @content; }
+  }
+  @else if $media == md-max {
+    @media only screen and (max-width: map-get($breakpoints, md)) { @content; }
+  }
+  @else if $media == lg-max {
+    @media only screen and (max-width: map-get($breakpoints, lg)) { @content; }
+  }
+  @else if $media == xl-max {
+    @media only screen and (max-width: map-get($breakpoints, xl)) { @content; }
+  }
+}

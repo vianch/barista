@@ -1,0 +1,21 @@
+//= Primary variables
+$color-blue       : #5bc0de;
+$color-green      : #5cb85c;
+$color-yellow     : #FCB040;
+$color-low-yellow : #fef5e3;
+$color-red 	      : #e84a6a;
+
+//= Information variables
+$color-success    : $color-green !default;
+$color-info       : $color-blue !default;
+$color-warning    : $color-yellow  !default;
+$color-danger     : $color-red     !default;
+
+$primary-color-blue:       #009AD8;
+$primary-color-grey:       #666666;
+$primary-color-grey-light: #CFD8DC;
+$primary-color-light:      #f4f4f4;
+$divider-color:            #feaf4c;
+
+// FONT
+$font-family: 'Lato', sans-serif;

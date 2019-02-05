@@ -1,0 +1,39 @@
+.ml-container-adaptive {
+  margin: 0 auto;
+  clear: both;
+
+  &:after, &:before {
+    display: table;
+    content: " ";
+  }
+
+  @include respond-to(xs) {
+    width: 100%;
+    padding: 30px;
+  }
+
+  @include respond-to(sm) {
+    width: 100%;
+    padding: 30px;
+  }
+
+  @include respond-to(md) {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  @include respond-to(lg) {
+    width: 945px;
+    padding: 0 30px;
+  }
+
+  @include respond-to(xl) {
+    width: 1140px;
+    padding: 0 30px;
+  }
+
+  @include respond-to(xx) {
+    width: 1520px;
+    padding: 0 30px;
+  }
+}
