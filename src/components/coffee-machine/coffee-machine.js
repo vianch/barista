@@ -2,10 +2,17 @@ import React from 'react';
 
 import coffeeCupStyles from './coffee-machine.scss';
 import ExtraIngredient from './extra-ingredient/extra-ingredient'
-import { coffeeExtraIngredients } from './coffee-cup.machine';
 import extraIngredientStyle from './extra-ingredient/extra-ingredient.scss';
 
-const coffeeCupComponent = () => {
+const coffeeCupComponent = (props) => {
+    const extraIngredientData = Object.keys(props.extraIngredients).map(ingredientKey => {
+        return props.extraIngredients[ingredientKey];
+    }) ;
+
+    const extraIngredientsElements = extraIngredientData.map((ingredient, index) => {
+        return <ExtraIngredient key={ingredient + index} ingredient={ ingredient } />
+    });
+
     return (
         <div className={coffeeCupStyles['cup-wrapper']}>
             <div className={coffeeCupStyles.machine}>
@@ -21,11 +28,7 @@ const coffeeCupComponent = () => {
             <div className={extraIngredientStyle['bar-extra-ingredients-component']}>
                 <h1 className={extraIngredientStyle['extra-ingredients-title']}>Extra ingredients</h1>
 
-                <ExtraIngredient ingredient={coffeeExtraIngredients.cinnamonPowder.selector} />
-                <ExtraIngredient ingredient={coffeeExtraIngredients.cocoaPowder.selector} />
-                <ExtraIngredient ingredient={coffeeExtraIngredients.sweetener.selector} />
-                <ExtraIngredient ingredient={coffeeExtraIngredients.marshmallow.selector} />
-                <ExtraIngredient ingredient={coffeeExtraIngredients.biscuits.selector} />
+                { extraIngredientsElements }
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { coffeeExtraIngredients } from '../coffee-cup.machine';
+import { coffeeExtraIngredients } from '../coffee-machine.models';
 import extraIngredientStyle from './extra-ingredient.scss'
 
 class ExtraIngredientComponent extends Component {
