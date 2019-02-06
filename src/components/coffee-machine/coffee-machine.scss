@@ -278,3 +278,15 @@
     width: 700px;
   }
 }
+
+@media (min-width: 0) and (max-width: 500px) {
+  .cup-wrapper {
+    height: auto;
+    margin-bottom: 15px;
+
+    .machine {
+      display: none;
+    }
+  }
+
+}

@@ -1,32 +1,63 @@
 import React, { Component } from 'react';
 
 import Auxiliary from '../../hoc/auxiliar';
-import CoffeMachine from '../../components/coffee-machine/coffee-machine';
-import { coffeeExtraIngredients } from '../../components/coffee-machine/coffee-machine.models';
+import CoffeeMachine from '../../components/coffee-machine/coffee-machine';
+import { coffeeExtraIngredients } from './barista.models';
+import BuildControls from '../../components/build-controls/build-controls';
 
-export default  class BaristaBuilderComponent extends Component {
+export default class BaristaBuilderComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            extraIngredients: {
-                cinnamonPowder: coffeeExtraIngredients.cinnamonPowder.selector,
-                cocoaPowder: coffeeExtraIngredients.cocoaPowder.selector,
-                marshmallow: coffeeExtraIngredients.marshmallow.selector,
-                sweetener: coffeeExtraIngredients.sweetener.selector,
-                biscuits: coffeeExtraIngredients.biscuits.selector,
-            }
+            extraIngredients: { },
+            totalPrice: 0,
         };
+    }
+
+    addExtraIngredientHandler = (ingredientName) => {
+        const updatedExtraIngredients = {
+            ...this.state.extraIngredients
+        };
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice + coffeeExtraIngredients[ingredientName].price;
+
+        if(!updatedExtraIngredients.hasOwnProperty(ingredientName)) {
+            updatedExtraIngredients[ingredientName] = coffeeExtraIngredients[ingredientName].selector;
+
+            this.setState({
+                extraIngredients: updatedExtraIngredients,
+                totalPrice: newPrice,
+            });
+        }
+    }
+
+    removeExtraIngredientHandler = (ingredientName) => {
+        const updatedExtraIngredients = {
+            ...this.state.extraIngredients
+        };
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice - coffeeExtraIngredients[ingredientName].price;
+
+        if(updatedExtraIngredients.hasOwnProperty(ingredientName)) {
+            delete updatedExtraIngredients[ingredientName];
+
+            this.setState({
+                extraIngredients: updatedExtraIngredients,
+                totalPrice: newPrice,
+            });
+        }
     }
 
     render() {
         return (
             <Auxiliary>
-                <CoffeMachine extraIngredients = { this.state.extraIngredients } />
+                <CoffeeMachine extraIngredients = { this.state.extraIngredients } />
 
-                <div className='bar-build-controls'>
-                    Build controls
-                </div>
+               <BuildControls
+                   extraIngredients = { this.state.extraIngredients }
+                   addExtraIngredientHandler={this.addExtraIngredientHandler}
+                   removeExtraIngredientHandler={this.removeExtraIngredientHandler} />
             </Auxiliary>
         );
     }

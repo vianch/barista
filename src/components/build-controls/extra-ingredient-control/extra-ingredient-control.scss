@@ -1,0 +1,26 @@
+@import "../../../stylesheets/config/mixins";
+@import "../../../stylesheets/config/theme";
+;
+.extra-ingredient-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+
+  .ingredient-label {
+    @include font-size(14px);
+    color: $second-theme-color
+  }
+
+  .add-ingredient-button {
+    display: block;
+    font: inherit;
+    padding: 5px;
+    width: 60px;
+    margin: 0 5px;
+    border: 1px solid $primary-theme-color;
+    cursor: pointer;
+    outline: none;
+  }
+}

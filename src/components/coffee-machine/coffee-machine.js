@@ -9,9 +9,13 @@ const coffeeCupComponent = (props) => {
         return props.extraIngredients[ingredientKey];
     }) ;
 
-    const extraIngredientsElements = extraIngredientData.map((ingredient, index) => {
-        return <ExtraIngredient key={ingredient + index} ingredient={ ingredient } />
-    });
+    let extraIngredientsElements = <h2>No extra ingredients added</h2>;
+
+    if (extraIngredientData.length > 0) {
+        extraIngredientsElements = extraIngredientData.map((ingredient, index) => {
+            return <ExtraIngredient key={ingredient + index} ingredient={ ingredient } />
+        });
+    }
 
     return (
         <div className={coffeeCupStyles['cup-wrapper']}>

@@ -1,0 +1,38 @@
+@import "../../stylesheets/config/mixins";
+@import "../../stylesheets/config/theme";
+
+.build-controls-component {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  margin: auto;
+
+  .build-control-title {
+    @include font-size(20px);
+    margin-bottom: 15px;
+    color: $primary-theme-color;
+  }
+
+  .build-control-container {
+    width: calc(50% - 30px);
+    background: white;
+    flex-flow: column wrap;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 0 15px;
+  }
+}
+
+@media (min-width: 0) and (max-width: 500px) {
+  .build-controls-component {
+    flex-flow: row wrap;
+
+    .build-control-container {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+}
